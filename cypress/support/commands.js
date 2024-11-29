@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// cypress/support/commands.js
+
+// cypress/support/commands.js
+
+Cypress.Commands.add('waitUntilPageLoad', () => {
+    // Listen for the 'load' event on the window
+    cy.window().then((win) => {
+      cy.wrap(win).its('document.readyState').should('eq', 'complete');
+    });
+  });
+  
+  

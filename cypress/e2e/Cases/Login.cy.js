@@ -1,12 +1,20 @@
-describe("Table cases", () => {
-    it("Verify the Number of rows on first Page", () => {
-    cy.visit("https://demoblaze.com/index.html")
+import Login from "../../Page_Objects/Login_Page";
+
+describe("Login cases", () => {
+    const ln=new Login();
+
+    it("Verify Login Successfully", () => {
+        
+    cy.visit("https://demoblaze.com/index.html")    
+     // Wait for the page to load fully
+     cy.waitUntilPageLoad();
+
+    ln.Login_option()
+    
     cy.wait(500)
-    cy.get('#login2').click()
-    cy.wait(500)
-    cy.get("input[id='loginusername']").type("champ0900")
-    cy.get("input[id='loginpassword']").type("0900")
-    cy.get("button[onclick='logIn()']").click()
+    ln.setuserName("champ0900")
+    ln.setPassword("0900")
+    ln.Login_button()
     cy.wait(500)
     });
     });
